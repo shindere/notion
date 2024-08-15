@@ -13,3 +13,14 @@ let client_of_flow t ~host connection =
     ~host:(Domain_name.of_string_exn host |> Domain_name.host_exn)
     t
     connection
+
+let null_auth ?ip:_ ~host:_ _ = Ok None
+
+let https ~authenticator =
+  let tls_config = Tls.Config.client ~authenticator () in
+  fun uri raw ->
+  let host =
+    Uri.host uri
+    |> Option.map (fun x -> Domain_name.(host_exn (of_string_exn x)))
+  in
+  Tls_eio.client_of_flow ?host tls_config raw

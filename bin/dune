@@ -1,4 +1,4 @@
 (executable
  (public_name notion)
  (name main)
- (libraries yojson ezcurl cohttp-eio tls-eio mirage-crypto-rng-eio eio_main uri notion))
+ (libraries yojson cohttp-eio tls-eio mirage-crypto-rng-eio eio_main uri notion))

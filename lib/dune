@@ -1,2 +1,3 @@
 (library
- (name notion))
+ (name notion)
+ (libraries cohttp-eio tls-eio mirage-crypto-rng-eio eio_main uri))
